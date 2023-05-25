@@ -19,7 +19,9 @@
     <script>
         $(document).ready(function() {
             var keys = [];
-            for (var key in dictionary) keys.push(key)
+            for (var key in dictionary) {
+                keys.push(key)
+                }
             $("#tags").autocomplete({
                 source: function(request, response) {
                     var results = $.ui.autocomplete.filter(keys, request.term);
