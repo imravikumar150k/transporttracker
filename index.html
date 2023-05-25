@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript">
+      function getGeoLocation() {
+        navigator.geolocation.getCurrentPosition(success, fail);
+        console.log("called");
+      }
+
+      function initGeoLocation() {
+        if (navigator.geolocation) {
+          // Call getCurrentPosition with success and failure callbacks
+          setInterval(getGeoLocation, 5000);
+        } else {
+          alert("Sorry, your browser does not support geolocation services.");
+        }
+      }
+
+      function success(position) {
+        document.getElementById('long').value = position.coords.longitude;
+        document.getElementById('lat').value = position.coords.latitude;
+        console.log("long", position.coords.longitude);
+        console.log("lat", position.coords.latitude)
+      }
+
+      function fail() {
+        // Could not obtain location
+        alert("Sorry, I can't get the location.");
+      }
+    </script>
+  </head>
+  <body onload="initGeoLocation()">
+    <FORM NAME="rd" METHOD="POST" ACTION="index.html">
+      <INPUT TYPE="text" NAME="long" ID="long" VALUE="">
+      <INPUT TYPE="text" NAME="lat" ID="lat" VALUE="">
+  </body>
+</html>
